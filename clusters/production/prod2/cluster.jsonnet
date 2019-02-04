@@ -15,7 +15,7 @@
   // you declare them in the format: name: { path: 'filesystem_path' },
   _components+: {
     sealed_secrets: { path: 'components/sealed_secrets' },
-    pharos: { path: 'components/pharos' },
+    // pharos: { path: 'components/pharos' },
   },
 
 
