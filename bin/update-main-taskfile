@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Updates the main Taskfile for generating all cluster components
+
+set -eu
+
+clusters=$(find clusters -type f -name 'cluster.jsonnet' -print0 | xargs -0 -n1 dirname | awk -F "/" '{print $NF}' | tr '\n' ',' | sed 's/,$//')
+
+if [[ -z  "$clusters" ]];
+then
+  echo "ERROR: No clusters found - ensure your cluster directory contains a cluster.jsonnet"
+  exit 1
+fi
+
+echo "Generating tasklist for clusters: $clusters"
+
+jsonnet --ext-str cluster_list=$clusters templates/task-generate-allclusters.jsonnet  > Taskfile.yml
+

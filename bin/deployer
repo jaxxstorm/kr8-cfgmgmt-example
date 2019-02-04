@@ -1,0 +1,81 @@
+#!/bin/bash
+
+if [ ! -z "$KR8_TRACE" ]
+then
+  set -x
+fi
+
+action="$1"
+cluster="$2"
+component="$3"
+
+compdir="generated/${cluster}/${component}"
+metadir="metadata/${cluster}/${component}"
+
+if [ -z "$component" ]
+then
+  echo "Usage: $0 {dry-run|update|diff|delete|validate} cluster component"
+  exit 1
+fi
+
+if [ ! -d "$compdir" ]
+then
+  echo "Cluster/component directory $compdir does not exist"
+  exit 1
+fi
+if [ ! -d "$metadir" ]
+then
+  echo "Cluster/metadata directory $metadir does not exist"
+  exit 1
+fi
+
+if [ -f $metadir/gc_tag ]
+then
+  gc_tag="--gc-tag $(cat $metadir/gc_tag)"
+else
+  gc_tag=
+fi
+
+# skip gc, unless a component opts-in
+gc_opt="--skip-gc"
+if [ -f "$metadir/gc_enable" ]
+then
+  gc_opt=
+fi
+
+
+if [ -f $metadir/kubecfg_update_args ]
+then
+  kubecfg_update_args=$(cat $metadir/kubecfg_update_args)
+else
+  kubecfg_update_args=
+fi
+
+# No longer setting default namespace with kubecfg
+#namespace="$(cat $metadir/namespace_default)"
+#namespaceopt="--namespace $namespace"
+namespaceopt=
+
+
+cfgcluster=$(echo $cluster | sed 's/-k//')
+
+case "$action" in
+  dry-run)
+    kubecfg --context "${USER}@${cfgcluster}" update $kubecfg_update_args --dry-run $gc_opt $gc_tag $namespaceopt $compdir/*.yaml
+    ;;
+  update)
+    kubecfg --context "${USER}@${cfgcluster}" update $kubecfg_update_args $gc_opt $gc_tag $namespaceopt $compdir/*.yaml
+    ;;
+  delete)
+    kubecfg --context "${USER}@${cfgcluster}" delete $namespaceopt $compdir/*.yaml
+    ;;
+  diff)
+    kubecfg --context "${USER}@${cfgcluster}" diff --diff-strategy=subset $namespaceopt $compdir/*.yaml
+    ;;
+  validate)
+    kubecfg --context "${USER}@${cfgcluster}" validate $kubecfg_update_args $namespaceopt $compdir/*.yaml
+    ;;
+  *)
+    echo "Unknown action"
+    exit 1
+esac

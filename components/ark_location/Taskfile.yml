@@ -1,0 +1,14 @@
+version: 2
+
+vars:
+  KR8_COMPONENT: ark_location
+
+tasks:
+  fetch:
+    desc: "fetch component dependencies"
+
+  generate:
+    desc: "generate"
+    cmds:
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers clean-output
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers jsonnet-render ark_location.jsonnet

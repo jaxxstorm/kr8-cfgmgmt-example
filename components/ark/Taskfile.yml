@@ -1,0 +1,30 @@
+version: 2
+
+vars:
+  KR8_COMPONENT: ark
+
+tasks:
+  fetch:
+    desc: "fetch component dependencies"
+    cmds:
+      - rm -fr vendored; mkdir -p vendored
+      - curl https://raw.githubusercontent.com/heptio/ark/master/examples/common/00-prereqs.yaml -o vendored/00-prereqs.yaml
+      - sed -i.bak '/^[[:blank:]]*#/d;s/#.*//' vendored/00-prereqs.yaml
+      - sed -i.bak '/^[[:space:]]*$/d' vendored/00-prereqs.yaml
+      - curl https://raw.githubusercontent.com/heptio/ark/master/examples/aws/10-deployment-kube2iam.yaml -o vendored/deploy.yaml.tmp
+      - sed '/^[[:blank:]]*#/d;s/#.*//' vendored/deploy.yaml.tmp >> vendored/lines.yaml.tmp
+      - sed '/^$/d' vendored/lines.yaml.tmp >> vendored/whitespace.yaml.tmp
+      - sed '/^[[:space:]]*$/d' vendored/whitespace.yaml.tmp >> vendored/ark.yaml
+      - rm vendored/*.tmp
+      - rm vendored/*.bak
+
+
+  generate:
+    desc: "generate"
+    cmds:
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers clean-output
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers yaml-install vendored/00-prereqs.yaml
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers jsonnet-render 01_namespace.jsonnet
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers jsonnet-render secrets.jsonnet
+      - KR8_COMPONENT={{.KR8_COMPONENT}} KR8_JSONNET_ARGS='--ext-str-file inputArk=vendored/ark.yaml' kr8-helpers jsonnet-render ark.jsonnet
+

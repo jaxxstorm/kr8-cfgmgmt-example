@@ -1,0 +1,24 @@
+version: 2
+
+vars:
+  KR8_COMPONENT: pharos
+
+tasks:
+  fetch:
+    desc: "fetch component dependencies"
+    cmds:
+      - rm -fr vendored; mkdir -p vendored
+      - curl https://raw.githubusercontent.com/pusher/faros/master/config/crds/faros_v1alpha1_clustergittrackobject.yaml >> vendored/01-crds.yaml
+      - echo '---' >> vendored/01-crds.yaml
+      - curl https://raw.githubusercontent.com/pusher/faros/master/config/crds/faros_v1alpha1_gittrack.yaml >> vendored/01-crds.yaml
+      - echo '---' >> vendored/01-crds.yaml
+      - curl https://raw.githubusercontent.com/pusher/faros/master/config/crds/faros_v1alpha1_gittrackobject.yaml >> vendored/01-crds.yaml
+
+
+  generate:
+    desc: "generate"
+    cmds:
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers clean-output
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers yaml-install vendored/01-crds.yaml
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers jsonnet-render pharos.jsonnet
+

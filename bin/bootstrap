@@ -1,0 +1,33 @@
+#!/bin/bash
+
+cluster="$1"
+task=$(which task)
+
+if [ -z "$task" ]
+then
+  echo "Must have task installed"
+  echo "See https://taskfile.org/#/installation"
+  exit 1
+fi
+
+if [ -z "$cluster" ]
+then
+  echo "Usage: $0 {cluster}"
+  echo "Available clusters:"
+  task -l | grep components | grep -v 'deploy' | grep -v 'dryrun' | awk '{print $2}' | tr -d ':'
+  exit 1
+fi
+
+export KR8_BASE=$(pwd)
+export PATH=$PATH:$KR8_BASE/bin
+
+if [ "$cluster" == "all" ];
+then
+  echo "Must select a cluster"
+fi
+
+bin/deployer update ${cluster} sealed_secrets
+kubectl apply -f generated/${cluster}/pharos/.
+
+
+

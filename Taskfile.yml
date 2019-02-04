@@ -1,0 +1,118 @@
+{
+   "output": "prefixed",
+   "tasks": {
+      "default": {
+         "cmds": [
+            "kr8-helpers check-environment",
+            {
+               "task": "dev1"
+            },
+            {
+               "task": "prod2"
+            },
+            {
+               "task": "prod1"
+            }
+         ]
+      },
+      "dev1": {
+         "cmds": [
+            {
+               "task": "dev1_taskfile"
+            },
+            "task -d tmp/dev1 generate"
+         ],
+         "desc": "generate components for dev1"
+      },
+      "dev1_deploy": {
+         "cmds": [
+            "task -d tmp/dev1 deploy"
+         ],
+         "desc": "deploy all components for cluster: dev1"
+      },
+      "dev1_dryrun": {
+         "cmds": [
+            "task -d tmp/dev1 dryrun"
+         ],
+         "desc": "dryrun all components for cluster: dev1"
+      },
+      "dev1_taskfile": {
+         "cmds": [
+            "mkdir -p tmp/dev1",
+            "kr8 jsonnet render --cluster dev1 --format yaml templates/task-generate-cluster-parallel.jsonnet > tmp/dev1/Taskfile.yml"
+         ],
+         "desc": "generate task file in tmp directory for cluster: dev1"
+      },
+      "prod1": {
+         "cmds": [
+            {
+               "task": "prod1_taskfile"
+            },
+            "task -d tmp/prod1 generate"
+         ],
+         "desc": "generate components for prod1"
+      },
+      "prod1_deploy": {
+         "cmds": [
+            "task -d tmp/prod1 deploy"
+         ],
+         "desc": "deploy all components for cluster: prod1"
+      },
+      "prod1_dryrun": {
+         "cmds": [
+            "task -d tmp/prod1 dryrun"
+         ],
+         "desc": "dryrun all components for cluster: prod1"
+      },
+      "prod1_taskfile": {
+         "cmds": [
+            "mkdir -p tmp/prod1",
+            "kr8 jsonnet render --cluster prod1 --format yaml templates/task-generate-cluster-parallel.jsonnet > tmp/prod1/Taskfile.yml"
+         ],
+         "desc": "generate task file in tmp directory for cluster: prod1"
+      },
+      "prod2": {
+         "cmds": [
+            {
+               "task": "prod2_taskfile"
+            },
+            "task -d tmp/prod2 generate"
+         ],
+         "desc": "generate components for prod2"
+      },
+      "prod2_deploy": {
+         "cmds": [
+            "task -d tmp/prod2 deploy"
+         ],
+         "desc": "deploy all components for cluster: prod2"
+      },
+      "prod2_dryrun": {
+         "cmds": [
+            "task -d tmp/prod2 dryrun"
+         ],
+         "desc": "dryrun all components for cluster: prod2"
+      },
+      "prod2_taskfile": {
+         "cmds": [
+            "mkdir -p tmp/prod2",
+            "kr8 jsonnet render --cluster prod2 --format yaml templates/task-generate-cluster-parallel.jsonnet > tmp/prod2/Taskfile.yml"
+         ],
+         "desc": "generate task file in tmp directory for cluster: prod2"
+      },
+      "taskfiles": {
+         "cmds": [
+            {
+               "task": "dev1_taskfile"
+            },
+            {
+               "task": "prod2_taskfile"
+            },
+            {
+               "task": "prod1_taskfile"
+            }
+         ],
+         "desc": "generate task files for all clusters"
+      }
+   },
+   "version": "2"
+}

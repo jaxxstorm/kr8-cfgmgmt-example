@@ -1,0 +1,17 @@
+version: 2
+
+vars:
+  KR8_COMPONENT: guestbook
+
+tasks:
+  fetch:
+    desc: "Get the components"
+    cmds:
+      - mkdir -p vendored; rm -rf vendored/*
+      - wget --quiet -N https://raw.githubusercontent.com/kubernetes/examples/master/guestbook/all-in-one/guestbook-all-in-one.yaml -O vendored/guestbook.yaml
+  generate:
+    desc: "Generate files"
+    cmds:
+      - KR8_COMPONENT={{.KR8_COMPONENT}} kr8-helpers clean-output
+      - KR8_COMPONENT={{.KR8_COMPONENT}} KR8_JSONNET_ARGS='--ext-str-file inputGuestbook=vendored/guestbook.yaml' kr8-helpers jsonnet-render guestbook.jsonnet
+

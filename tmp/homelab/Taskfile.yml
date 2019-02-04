@@ -1,0 +1,117 @@
+output: group
+tasks:
+  _deploydeps:
+    deps:
+    - deploy_component_metallb
+    - deploy_component_nginx_ingress
+    - deploy_component_prometheus
+    - deploy_component_sealed_secrets
+  _gendeps:
+    deps:
+    - generate_component_metallb
+    - generate_component_nginx_ingress
+    - generate_component_prometheus
+    - generate_component_sealed_secrets
+  _rundeps:
+    deps:
+    - dryrun_component_metallb
+    - dryrun_component_nginx_ingress
+    - dryrun_component_prometheus
+    - dryrun_component_sealed_secrets
+  deploy:
+    cmds:
+    - task: _deploydeps
+  deploy_component_metallb:
+    cmds:
+    - bin/deployer validate homelab metallb
+    - bin/deployer update homelab metallb
+    desc: deploy  metallb for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab metallb
+  deploy_component_nginx_ingress:
+    cmds:
+    - bin/deployer validate homelab nginx_ingress
+    - bin/deployer update homelab nginx_ingress
+    desc: deploy  nginx_ingress for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab nginx_ingress
+  deploy_component_prometheus:
+    cmds:
+    - bin/deployer validate homelab prometheus
+    - bin/deployer update homelab prometheus
+    desc: deploy  prometheus for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab prometheus
+  deploy_component_sealed_secrets:
+    cmds:
+    - bin/deployer validate homelab sealed_secrets
+    - bin/deployer update homelab sealed_secrets
+    desc: deploy  sealed_secrets for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab sealed_secrets
+  dryrun:
+    cmds:
+    - task: _rundeps
+  dryrun_component_metallb:
+    cmds:
+    - bin/deployer validate homelab metallb
+    - bin/deployer dry-run homelab metallb
+    desc: Dry-run deployment metallb for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab metallb
+  dryrun_component_nginx_ingress:
+    cmds:
+    - bin/deployer validate homelab nginx_ingress
+    - bin/deployer dry-run homelab nginx_ingress
+    desc: Dry-run deployment nginx_ingress for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab nginx_ingress
+  dryrun_component_prometheus:
+    cmds:
+    - bin/deployer validate homelab prometheus
+    - bin/deployer dry-run homelab prometheus
+    desc: Dry-run deployment prometheus for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab prometheus
+  dryrun_component_sealed_secrets:
+    cmds:
+    - bin/deployer validate homelab sealed_secrets
+    - bin/deployer dry-run homelab sealed_secrets
+    desc: Dry-run deployment sealed_secrets for homelab
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff homelab sealed_secrets
+  generate:
+    cmds:
+    - kr8-helpers check-environment
+    - rm -fr $KR8_BASE/generated/homelab
+    - task: _gendeps
+  generate_component_metallb:
+    cmds:
+    - KR8_CLUSTER=homelab task generate KR8_COMPONENT=metallb
+    desc: Generate metallb for homelab
+    dir: $KR8_BASE/components/metallb
+  generate_component_nginx_ingress:
+    cmds:
+    - KR8_CLUSTER=homelab task generate KR8_COMPONENT=nginx_ingress
+    desc: Generate nginx_ingress for homelab
+    dir: $KR8_BASE/components/nginx_ingress
+  generate_component_prometheus:
+    cmds:
+    - KR8_CLUSTER=homelab task generate KR8_COMPONENT=prometheus
+    desc: Generate prometheus for homelab
+    dir: $KR8_BASE/components/prometheus
+  generate_component_sealed_secrets:
+    cmds:
+    - KR8_CLUSTER=homelab task generate KR8_COMPONENT=sealed_secrets
+    desc: Generate sealed_secrets for homelab
+    dir: $KR8_BASE/components/sealed_secrets
+version: "2"
+
