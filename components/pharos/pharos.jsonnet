@@ -57,7 +57,7 @@ kube.objectValues(
     },
     spec: {
       repository: config.gitrepo,
-      reference: config.gitbranch,,
+      reference: config.gitbranch,
       subPath: config.subpath,
     },
   },

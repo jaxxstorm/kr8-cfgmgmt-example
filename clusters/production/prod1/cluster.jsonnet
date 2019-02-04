@@ -7,7 +7,7 @@
     region_name: 'ams3',
     cluster_name: 'prod1',
     cluster_type: 'digitalocean',
-    dns_domain: 'lbrlabs.com',
+    dns_domain: 'kr8.rocks',
   },
 
   // these are the components you want in the cluster

@@ -96,6 +96,7 @@ spec:
       - args:
         - --log-level=debug
         - --domain-filter=lbrlabs.com
+        - --domain-filter=kr8.rocks
         - --policy=sync
         - --provider=cloudflare
         - --registry=txt

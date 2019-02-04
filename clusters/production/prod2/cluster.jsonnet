@@ -7,7 +7,7 @@
     region_name: 'lon1',
     cluster_name: 'prod2',
     cluster_type: 'digitalocean',
-    dns_domain: 'lbrlabs.com',
+    dns_domain: 'kr8.rocks',
   },
 
   // these are the components you want in the cluster
@@ -15,6 +15,7 @@
   // you declare them in the format: name: { path: 'filesystem_path' },
   _components+: {
     sealed_secrets: { path: 'components/sealed_secrets' },
+    pharos: { path: 'components/pharos' },
   },
 
 
@@ -29,6 +30,10 @@
     },
     txtPrefix: 'prod2',
     txtOwnerId: 'prod2-',
+  },
+
+  pharos+: {
+    subpath: 'generated/prod2',
   },
 
 

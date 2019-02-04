@@ -9,6 +9,7 @@
     provider: 'cloudflare',
     domainFilters: [
       'lbrlabs.com',
+      'kr8.rocks',
     ],
     tolerateMasters: false,
   },
