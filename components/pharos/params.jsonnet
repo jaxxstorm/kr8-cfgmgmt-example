@@ -6,4 +6,5 @@
   subpath: '',
   gitrepo: error 'Must specify a git repo',
   gitbranch: 'master',
+  kubecfg_update_args: '--ignore-unknown',
 }
