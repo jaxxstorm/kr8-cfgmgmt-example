@@ -2,7 +2,7 @@
 
   // Production gets the same configuration for all clusters
   _components+: {
-    external_dns: { path: 'components/external_dns' },
+    // external_dns: { path: 'components/external_dns' },
   },
 
   external_dns+: {
