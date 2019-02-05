@@ -15,13 +15,14 @@
   // you declare them in the format: name: { path: 'filesystem_path' },
   _components+: {
     sealed_secrets: { path: 'components/sealed_secrets' },
-    external_dns: { path: 'components/external_dns' },
+    // external_dns: { path: 'components/external_dns' },
   },
 
 
   // this is configuration for the above components
   // you override the default params in the component here
   // the name needs to match the name of the declared component
+  /*
   external_dns+: {
     extraEnv: {
       CF_API_KEY: 'AgCnv+KXBHifRcoW23DuSGYt8zxQGevOQMYKskwec+iMkwOQveGfsLNdHEkBYB9WuyCXv6N7zCnpoNCG//LniOpMNBPjc81XXNp9Lht8iARy6AObZE9uosPaMSNMsluleZNVREhBTZTVTnak1YPIGXhJ7xU2MPiZvd428Ioy4nXCmc0QO/rElQiAyIXZS9yksbCkQzETgWjRQ5Z0/Bb+pg1PTQapeHTmDMmhjGvFfLHa5ooszmP1Az6a3LDty5jBB68P+v58Eb0BOo14drMJtan00pPQPIrZrqVS1eF2IsUNos+lmnusqk6CABVq+ufjQDfUdpaigNY1FKWqbUCmQUJ8o2s3hS8xAPE/FW3GvTt6FEqoalUWI9Jsa6u22WQnvv5dv6qMTWUIxSaJlV9rClKpFYgsJRqZSLrnuJTyHlVOuCAW1ww9EgUbhzDVrVgu851m/g19T+B6/p4Z/9aZTGBiSeHfjhlxiY07fkIyD1kZMcWqz/Pmfy6ijqBVESZEyMKxj2o3howcWe+la0uwBDslu+u/QRPwdRBM9mVNMYY5QehfGpqBed+LaDeSBidY0wv5jIpJ95XzgE+cSbX3phbfRb3wJv0eyPkNVqvAaT2wCj3fHw3XUYTV0NIgrPWwIj9Q0KYpIcYfklo3wgvwhCOlEsQu4giRDvN3yd8T7q4VCChwkBecAtm0BBfPIqcAuEiw2lRrQiA100XpB03ErKyDvnSmxF5RyKznetNEr956Eo6dlt1Z\n',
@@ -36,6 +37,7 @@
     ],
     tolerateMasters: false,
   },
+  */
 
 
 }
