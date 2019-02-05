@@ -2,19 +2,30 @@ output: group
 tasks:
   _deploydeps:
     deps:
+    - deploy_component_external_dns
     - deploy_component_nginx_ingress
     - deploy_component_sealed_secrets
   _gendeps:
     deps:
+    - generate_component_external_dns
     - generate_component_nginx_ingress
     - generate_component_sealed_secrets
   _rundeps:
     deps:
+    - dryrun_component_external_dns
     - dryrun_component_nginx_ingress
     - dryrun_component_sealed_secrets
   deploy:
     cmds:
     - task: _deploydeps
+  deploy_component_external_dns:
+    cmds:
+    - bin/deployer validate prod2 external_dns
+    - bin/deployer update prod2 external_dns
+    desc: deploy  external_dns for prod2
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff prod2 external_dns
   deploy_component_nginx_ingress:
     cmds:
     - bin/deployer validate prod2 nginx_ingress
@@ -34,6 +45,14 @@ tasks:
   dryrun:
     cmds:
     - task: _rundeps
+  dryrun_component_external_dns:
+    cmds:
+    - bin/deployer validate prod2 external_dns
+    - bin/deployer dry-run prod2 external_dns
+    desc: Dry-run deployment external_dns for prod2
+    dir: $KR8_BASE/
+    status:
+    - bin/deployer diff prod2 external_dns
   dryrun_component_nginx_ingress:
     cmds:
     - bin/deployer validate prod2 nginx_ingress
@@ -55,6 +74,11 @@ tasks:
     - kr8-helpers check-environment
     - rm -fr $KR8_BASE/generated/prod2
     - task: _gendeps
+  generate_component_external_dns:
+    cmds:
+    - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=external_dns
+    desc: Generate external_dns for prod2
+    dir: $KR8_BASE/components/external_dns
   generate_component_nginx_ingress:
     cmds:
     - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=nginx_ingress

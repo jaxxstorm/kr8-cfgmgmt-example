@@ -23,7 +23,6 @@
   // you override the default params in the component here
   // the name needs to match the name of the declared component
 
-  /*
   external_dns+: {
     extraEnv: {
       CF_API_KEY: 'AgANydgcAI18InqePLbgfxKcpd7FBRxzQ/i2CDhSTkeZST783cg+qRFH/Y2dsLyzuXtiwsS5ZFBfDw9Me7NZGDZOWINn8y+MaDzByZp69AQ5EPaElj9Ho5bCzHdeGSefRWEEgRDQFgbPeB8Fq5PiHaH1Hss7nREbAcBoJiOm8NwX8xncX0enGJhl0yUMugNLfrVB2/Ot6iQ1CD6yNIaAjHfFef+YURjKE/ULLlsczByNdm9UrwTrGE6Nd5PVT4LWiYJrAMBmzo1s8XD8hT1PkIhqR1+vl4RxP7iyAr3w9pxyR0Kfjm2APFBIdbSzaSFLaz+N+pVgWwE6TwPOTLVG/nkjsKAttW4ma/z7lP08TCC8+xOzQx12wcSXDu8MOMOWmVEHkr7cqr9p8bHscBjvScAxb10X5BoMSNUQEA7H1uQqnI0++yeJHb80rR950yIJAjWr/uQ8zz1c1XIVIljnWpyZM5Ad1WdcQ1mhsEt+2+87x90N5TLxZ4N2VFeM6vbRfIeRyoXQ0xkPSxAmHqkW5y6eckUiXt62LS1D5QUFnNkcpbQU1C10klxcEW4WguLfpA71UaOf3hk16Th3VlTBfqrLAJwHiYVZfYkWR9Otll6rgwWD8fXYDivSjh7zhPHPu/aVWtewRe23Ya3OU43JmQCgjxsH/UO5uBcmPUyl9TlLKO2zcW5wNGXuhV5PFC2qiyplXqNMY5wkyCWKALQbydHGdomU1nnqKWOvsjvACJgmqRQrhdgy',
@@ -32,7 +31,6 @@
     txtPrefix: 'prod2',
     txtOwnerId: 'prod2-',
   },
-  */
 
   /*
   pharos+: {
