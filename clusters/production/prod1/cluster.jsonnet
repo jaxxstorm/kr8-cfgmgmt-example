@@ -21,6 +21,7 @@
   // this is configuration for the above components
   // you override the default params in the component here
   // the name needs to match the name of the declared component
+  /*
   external_dns+: {
     extraEnv: {
       CF_API_KEY: 'AgBVGeAxfKBe2bLTVRBDnAfEfEwn2w5+e7dTQnxh9OuT2F5KaHvOhnTqwmh+7yhlEg9m5EyQIPwkGVTuwePG7m2DKZp6gmMfy1KyBzg11/5j1yl8KAX+fTeoiaarCqHlpjtdH3OMlT18Yk/qGlwg6++/SuPpEGlU2L9ZVxglFjvYUPGEhkZrJXIcMECT39P2f82Ir6RbBwH3Siq1dFdQHX6VeKWIGk02+z6dNeDE4NnY6dziah71iH5ka6+9v3tdNw4G0jbylJnCxeDYPThZIGoc4U48zorYAXSzqXvl4vKDFS7v8TObASOkVNcZKutdAdiYD1DY/i0X+JK2bnNjsUFbszWGAysV98HwJPmLDPdGf7Barl4uAevn/FJinbC9Tp8GXABz4WCkXVY55U/31aYKUb4jHu2fj9OZFNn13Guhhzlc4ORgeWIrOI33Jxw6i4zMCgZrcVZe6M3D2PIKB/TWNB2CfRThr9ic/Mr1yEpQqaL+ZTn2qL9MAXmIzia6Rp1I35+eCnZ8zmQixMkNVqJiJOSbaIOTNOI8FPKRZVpcci4o9rSSW+5mZDOUctyUUibHSFlkpQAcxjm6KL8KXSgWjfnU5PHNZIK367iljyuEmz5WOOf+CuxEjvfsRBwfwwDP5pNf4PrdvGLxjBjcJlaK0/nFy1yKo4CPpp0wm0jzt6j7UQGwBA7GwEaha87TkARQBfiG+dVhH+bFTGzxNN3V9jN5mukjNAotea/Q/bKWxesST+JB',
@@ -29,6 +30,7 @@
     txtPrefix: 'prod1',
     txtOwnerId: 'prod1-',
   },
+  */
 
 
 }
