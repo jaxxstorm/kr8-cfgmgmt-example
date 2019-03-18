@@ -8,4 +8,5 @@
   domainFilters: [],
   txtOwnerId: std.format('%s', $._cluster.cluster_name),
   tolerateMasters: false,
+  logLevel: 'info',
 }

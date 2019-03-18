@@ -16,7 +16,7 @@
   _components+: {
     sealed_secrets: { path: 'components/sealed_secrets' },
     pharos: { path: 'components/pharos' },
-    guestbook: { path: 'components/guestbook' },
+    // guestbook: { path: 'components/guestbook' },
   },
 
 
@@ -31,15 +31,18 @@
     },
     txtPrefix: 'prod2',
     txtOwnerId: 'prod2-',
+    logLevel: 'debug',
   },
 
   pharos+: {
     subpath: 'generated/prod2',
   },
 
+  /*
   guestbook+: {
     url: 'guestbook.lbrlabs.com',
   },
+  */
 
 
 }

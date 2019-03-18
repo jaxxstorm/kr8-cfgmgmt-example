@@ -25,5 +25,5 @@ local config = std.extVar('kr8');
     create: true,
   },
   policy: 'sync',
-  logLevel: 'info',
+  logLevel: config.logLevel,
 }

@@ -3,21 +3,18 @@ tasks:
   _deploydeps:
     deps:
     - deploy_component_external_dns
-    - deploy_component_guestbook
     - deploy_component_nginx_ingress
     - deploy_component_pharos
     - deploy_component_sealed_secrets
   _gendeps:
     deps:
     - generate_component_external_dns
-    - generate_component_guestbook
     - generate_component_nginx_ingress
     - generate_component_pharos
     - generate_component_sealed_secrets
   _rundeps:
     deps:
     - dryrun_component_external_dns
-    - dryrun_component_guestbook
     - dryrun_component_nginx_ingress
     - dryrun_component_pharos
     - dryrun_component_sealed_secrets
@@ -32,14 +29,6 @@ tasks:
     dir: $KR8_BASE/
     status:
     - bin/deployer diff prod2 external_dns
-  deploy_component_guestbook:
-    cmds:
-    - bin/deployer validate prod2 guestbook
-    - bin/deployer update prod2 guestbook
-    desc: deploy  guestbook for prod2
-    dir: $KR8_BASE/
-    status:
-    - bin/deployer diff prod2 guestbook
   deploy_component_nginx_ingress:
     cmds:
     - bin/deployer validate prod2 nginx_ingress
@@ -75,14 +64,6 @@ tasks:
     dir: $KR8_BASE/
     status:
     - bin/deployer diff prod2 external_dns
-  dryrun_component_guestbook:
-    cmds:
-    - bin/deployer validate prod2 guestbook
-    - bin/deployer dry-run prod2 guestbook
-    desc: Dry-run deployment guestbook for prod2
-    dir: $KR8_BASE/
-    status:
-    - bin/deployer diff prod2 guestbook
   dryrun_component_nginx_ingress:
     cmds:
     - bin/deployer validate prod2 nginx_ingress
@@ -117,11 +98,6 @@ tasks:
     - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=external_dns
     desc: Generate external_dns for prod2
     dir: $KR8_BASE/components/external_dns
-  generate_component_guestbook:
-    cmds:
-    - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=guestbook
-    desc: Generate guestbook for prod2
-    dir: $KR8_BASE/components/guestbook
   generate_component_nginx_ingress:
     cmds:
     - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=nginx_ingress
