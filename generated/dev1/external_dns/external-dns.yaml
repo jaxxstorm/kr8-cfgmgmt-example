@@ -94,7 +94,7 @@ spec:
     spec:
       containers:
       - args:
-        - --log-level=debug
+        - --log-level=info
         - --domain-filter=briggs.work
         - --policy=sync
         - --provider=cloudflare

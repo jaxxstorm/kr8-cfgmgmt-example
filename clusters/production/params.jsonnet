@@ -7,10 +7,7 @@
 
   external_dns+: {
     provider: 'cloudflare',
-    domainFilters: [
-      'lbrlabs.com',
-      'kr8.rocks',
-    ],
+    domainFilters: ['lbrlabs.com'],
     tolerateMasters: false,
   },
 }

@@ -94,9 +94,8 @@ spec:
     spec:
       containers:
       - args:
-        - --log-level=debug
+        - --log-level=info
         - --domain-filter=lbrlabs.com
-        - --domain-filter=kr8.rocks
         - --policy=sync
         - --provider=cloudflare
         - --registry=txt
