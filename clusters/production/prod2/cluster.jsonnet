@@ -16,7 +16,7 @@
   _components+: {
     sealed_secrets: { path: 'components/sealed_secrets' },
     pharos: { path: 'components/pharos' },
-    // guestbook: { path: 'components/guestbook' },
+    // guestbook: { path: 'components/guestbook' }, # FIXME: uncomment for prod2 demo
   },
 
 
@@ -32,12 +32,19 @@
     txtPrefix: 'prod2',
     txtOwnerId: 'prod2-',
     logLevel: 'debug',
+    // FIXME: uncomment for prod2 demo
+    /*
+    domainFilters: [
+      'prod2.briggs.work',
+    ],
+    */
   },
 
   pharos+: {
     subpath: 'generated/prod2',
   },
 
+  // FIXME: uncomment for prod2 demo
   /*
   guestbook+: {
     url: 'guestbook-2.lbrlabs.com',

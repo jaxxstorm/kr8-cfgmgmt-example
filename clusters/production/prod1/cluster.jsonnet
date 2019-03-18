@@ -15,7 +15,7 @@
   // you declare them in the format: name: { path: 'filesystem_path' },
   _components+: {
     sealed_secrets: { path: 'components/sealed_secrets' },
-    // guestbook: { path: 'components/guestbook' },
+    // guestbook: { path: 'components/guestbook' }, # FIXME uncomment for prod1 demo
   },
 
 
@@ -29,10 +29,20 @@
     },
     txtPrefix: 'prod1',
     txtOwnerId: 'prod1-',
+    // FIXME: uncomment for prod1 demo
+    /*
+    domainFilters: [
+      'prod1.briggs.work',
+    ],
+    */
   },
+
+  // FIXME: uncomment for prod1 demo
+  /*
   guestbook+: {
     url: 'guestbook-1.lbrlabs.com',
   },
+  */
 
 
 }
