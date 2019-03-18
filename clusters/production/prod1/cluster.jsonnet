@@ -15,6 +15,7 @@
   // you declare them in the format: name: { path: 'filesystem_path' },
   _components+: {
     sealed_secrets: { path: 'components/sealed_secrets' },
+    // guestbook: { path: 'components/guestbook' },
   },
 
 
@@ -28,6 +29,9 @@
     },
     txtPrefix: 'prod1',
     txtOwnerId: 'prod1-',
+  },
+  guestbook+: {
+    url: 'guestbook-1.lbrlabs.com',
   },
 
 

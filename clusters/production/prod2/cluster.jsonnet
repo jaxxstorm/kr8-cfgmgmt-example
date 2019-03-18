@@ -40,7 +40,7 @@
 
   /*
   guestbook+: {
-    url: 'guestbook.lbrlabs.com',
+    url: 'guestbook-2.lbrlabs.com',
   },
   */
 
