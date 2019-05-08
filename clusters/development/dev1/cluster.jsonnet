@@ -33,6 +33,7 @@
     txtOwnerId: 'dev1-',
     domainFilters: [
       'briggs.work',
+      // lbrlabs.com
     ],
     tolerateMasters: false,
   },
