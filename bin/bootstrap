@@ -27,7 +27,6 @@ then
 fi
 
 bin/deployer update ${cluster} sealed_secrets
-kubectl apply -f generated/${cluster}/pharos/.
 
 
 

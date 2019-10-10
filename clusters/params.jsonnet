@@ -20,9 +20,5 @@
     nginx_ingress: { path: 'components/nginx_ingress' },
   },
 
-  pharos+: {
-    gitrepo: 'https://github.com/jaxxstorm/kr8-cfgmgmt-example',
-  },
-
 
 }

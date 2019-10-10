@@ -4,19 +4,16 @@ tasks:
     deps:
     - deploy_component_external_dns
     - deploy_component_nginx_ingress
-    - deploy_component_pharos
     - deploy_component_sealed_secrets
   _gendeps:
     deps:
     - generate_component_external_dns
     - generate_component_nginx_ingress
-    - generate_component_pharos
     - generate_component_sealed_secrets
   _rundeps:
     deps:
     - dryrun_component_external_dns
     - dryrun_component_nginx_ingress
-    - dryrun_component_pharos
     - dryrun_component_sealed_secrets
   deploy:
     cmds:
@@ -37,14 +34,6 @@ tasks:
     dir: $KR8_BASE/
     status:
     - bin/deployer diff prod2 nginx_ingress
-  deploy_component_pharos:
-    cmds:
-    - bin/deployer validate prod2 pharos
-    - bin/deployer update prod2 pharos
-    desc: deploy  pharos for prod2
-    dir: $KR8_BASE/
-    status:
-    - bin/deployer diff prod2 pharos
   deploy_component_sealed_secrets:
     cmds:
     - bin/deployer validate prod2 sealed_secrets
@@ -72,14 +61,6 @@ tasks:
     dir: $KR8_BASE/
     status:
     - bin/deployer diff prod2 nginx_ingress
-  dryrun_component_pharos:
-    cmds:
-    - bin/deployer validate prod2 pharos
-    - bin/deployer dry-run prod2 pharos
-    desc: Dry-run deployment pharos for prod2
-    dir: $KR8_BASE/
-    status:
-    - bin/deployer diff prod2 pharos
   dryrun_component_sealed_secrets:
     cmds:
     - bin/deployer validate prod2 sealed_secrets
@@ -103,11 +84,6 @@ tasks:
     - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=nginx_ingress
     desc: Generate nginx_ingress for prod2
     dir: $KR8_BASE/components/nginx_ingress
-  generate_component_pharos:
-    cmds:
-    - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=pharos
-    desc: Generate pharos for prod2
-    dir: $KR8_BASE/components/pharos
   generate_component_sealed_secrets:
     cmds:
     - KR8_CLUSTER=prod2 task generate KR8_COMPONENT=sealed_secrets
